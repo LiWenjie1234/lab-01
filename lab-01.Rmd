@@ -170,8 +170,8 @@ _Perform the same calculation for the 2021 admissions data._
 ```{r Ex_h}
 visitors %>% 
   summarise(
-    mean_2021 = mean(n_2021),
-    med_2021 = median(n_2021)
+    mean_2021 = mean(n_2021, na.rm = TRUE),
+    med_2021 = median(n_2021, na.rm = TRUE)
   )
 ```
 
@@ -182,7 +182,8 @@ All values in the output are `NA`!
 _What does `NA` stand for and why are you getting this as your answer to the previous question._
 
 **Write your answer here**
-
+'NA' stand for not available.
+I got NA in the previous question because some data in the column n_2021 are 'NA'.
 
 
 
@@ -191,7 +192,7 @@ _What does `NA` stand for and why are you getting this as your answer to the pre
 _Look at the help pages for the `mean()` and `median()` commands to see what the input argument `na.rm` does. Edit your code from exercise h so that it computes the summary statistics where data is available._
 
 **Write your answer here**
-
+na.rm is a logical value indicating whether NA values should be stripped before the computation proceeds.
 
 
 
@@ -213,17 +214,19 @@ visitors %>%
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
 **Write your answer here**
+Most values cluster at the lower end.
+
 
 ## Question 8
 
 ### Exercise l.
 
 ```{r Q8}
-#visitors %>% 
-#  summarise(
-#     __________,
-#     __________,
-#  )
+visitors %>% 
+  summarise(
+     max_2021 = max(n_2021),
+     min_2021 = min(n_2021),
+  )
 ```
 
 ## Question 9
@@ -254,8 +257,8 @@ _How many tourist attractions are there in each of the 4 nations? From this, dis
 
 
 ```{r Ex_l}
-#________ %>%
-#  ______(_______)
+attraction%>%
+  count(nation)
 ```
 
 
